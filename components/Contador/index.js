@@ -3,6 +3,7 @@ import { ConstainerContador } from "./style";
 
 const Contador = () => {
   return (
+    
     <ConstainerContador>
       <div>
         <span>2</span>
