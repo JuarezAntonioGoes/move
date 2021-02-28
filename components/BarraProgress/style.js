@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const ConstainerBarra = styled.div`
-  width: 80%;
+  margin: 2rem auto 4rem auto;
+  width: 90%;
   max-width: 960px;
-  border: 1px solid #000;
   height: 30px;
 
   display: flex;
@@ -23,8 +23,8 @@ export const Barra = styled.div`
   background-color: #dcdde0;
   border-radius: 5px;
   height: 0.25rem;
-  width: 85%;
-  max-width: 845%;
+  width: 100%;
+  max-width: 845px;
 `;
 
 export const Progress = styled.div`

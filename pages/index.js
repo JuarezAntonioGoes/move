@@ -6,10 +6,10 @@ import Contador from "../components/Contador";
 export default function Home({ allPostsData }) {
   return (
     <>
-      {/* <BarraProgress /> */}
-      {/* <ButtonCiclo>Iniciar um ciclo</ButtonCiclo> */}
-      {/* <Contador /> */}
+      <BarraProgress />
       <Avatar />
+      <Contador />
+      <ButtonCiclo>Iniciar um ciclo</ButtonCiclo>
     </>
   );
 }

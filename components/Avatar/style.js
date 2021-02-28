@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const Container = styled.div``;
+
 export const ContainerAvatar = styled.div`
   display: flex;
   width: 19.25rem;
@@ -34,5 +36,29 @@ export const InfoUser = styled.div`
 
   p span {
     color: #666666;
+  }
+`;
+
+export const ContainerDesafio = styled.div`
+  margin: 2.5rem 0;
+  width: 24.32rem;
+  font-family: "Inter", sans-serif;
+  color: #666666;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #D7D8DA;
+
+  span {
+    font-weight: 600;
+    font-size: 1.125rem;
+    display: flex;
+    height: 1.125rem;
+  }
+
+  span:nth-child(2) {
+    font-size: 1.5rem;
+    height: 1.5rem;
   }
 `;
