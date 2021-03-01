@@ -1,3 +1,4 @@
+import { title } from "process";
 import React, { createContext } from "react";
 
 export const ContextoCiclo = createContext();
@@ -10,10 +11,13 @@ const CicloProvider = ({ children }) => {
   const [challengeCompleted, setChallengeCompleted] = React.useState(0);
   const [level, setLevel] = React.useState(1);
   const [experienceCurrent, setExperienceCurrent] = React.useState(0);
+  const [notification, setNotification] = React.useState(false);
 
   const experienceToNextChallenge = Math.pow((level + 1) * 4, 2);
 
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    setNotification(Notification.requestPermission());
+  }, []);
 
   const updateExperience = (experienceConquisted) => {
     console.log(experienceCurrent, experienceConquisted);
@@ -26,6 +30,25 @@ const CicloProvider = ({ children }) => {
     } else {
       setExperienceCurrent(experienceCurrent + experienceConquisted);
     }
+  };
+
+  const handleResetContador = () => {
+    setHasFinished(false);
+    setTimeActive(false);
+    setTime(minDefult);
+  };
+
+  const handleNotify = (xp) => {
+    notification.then((response) => {
+      if (response === "granted") {
+        const audio = new Audio("./sounds/notification.mp3");
+        audio.play();
+
+        new Notification("Vamos lá!", {
+          body: ` pratique um breve exercício valendo ${xp}xp 😀`,
+        });
+      }
+    });
   };
 
   return (
@@ -45,6 +68,8 @@ const CicloProvider = ({ children }) => {
         experienceToNextChallenge,
         updateExperience,
         experienceCurrent,
+        handleResetContador,
+        handleNotify,
       }}
     >
       {children}

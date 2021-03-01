@@ -13,31 +13,31 @@ import action from "../../action-ciclo.json";
 const CardCiclo = () => {
   const {
     hasFinished,
-    setHasFinished,
-    setTimeActive,
-    minDefult,
     challengeCompleted,
     setChallengeCompleted,
-    setTime,
     updateExperience,
+    handleResetContador,
+    handleNotify,
   } = React.useContext(ContextoCiclo);
 
   const actionIndex = Math.floor(Math.random() * action.length);
   const actionSelected = action[actionIndex];
 
   const handleFalhei = () => {
-    setHasFinished(false);
-    setTimeActive(false);
-    setTime(minDefult);
+    handleResetContador();
   };
 
   const handleCompletei = (experienceConquisted) => {
-    setHasFinished(false);
-    setTimeActive(false);
-    setTime(minDefult);
+    handleResetContador();
     setChallengeCompleted(challengeCompleted + 1);
     updateExperience(experienceConquisted);
   };
+
+  React.useEffect(() => {
+    if (hasFinished && hasFinished) {
+      handleNotify(actionSelected.amount);
+    }
+  }, [hasFinished, hasFinished]);
 
   return (
     <CicloContainer>
