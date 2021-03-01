@@ -1,4 +1,5 @@
 import React from "react";
+import { ContextoCiclo } from "../../contexts/CicloContext";
 import {
   Container,
   ContainerAvatar,
@@ -8,6 +9,8 @@ import {
 } from "./style";
 
 const Avatar = () => {
+  const { challengeCompleted, level } = React.useContext(ContextoCiclo);
+
   return (
     <Container>
       <ContainerAvatar>
@@ -19,14 +22,14 @@ const Avatar = () => {
           <h1>Juarez Goes</h1>
           <p>
             <img src="./images/new.svg" alt="seta para cima" />
-            <span>Level 1</span>
+            <span>Level {level}</span>
           </p>
         </InfoUser>
       </ContainerAvatar>
 
       <ContainerDesafio>
         <span>Desafios completos</span>
-        <span>00</span>
+        <span>{challengeCompleted.toString().padStart(2, "0")}</span>
       </ContainerDesafio>
     </Container>
   );
