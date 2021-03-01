@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
+import { ContextoCiclo } from "../../contexts/CicloContext";
 import ButtonCiclo from "../ButtonCiclo";
 import { ConstainerContador } from "./style";
 
 const Contador = () => {
   const [time, setTime] = React.useState(0.1 * 60);
   const [timeActive, setTimeActive] = React.useState(false);
-  const [hasFinished, setHasFinished] = React.useState(false);
+
+  const { hasFinished, setHasFinished } = React.useContext(ContextoCiclo);
 
   let contadorTimeOut;
 
