@@ -32,6 +32,7 @@ export const Progress = styled.div`
   width: 60%;
   background-color: #4cd62b;
   position: relative;
+  transition: 0.8s;
 
   div {
     font-family: "Inter", sans-serif;

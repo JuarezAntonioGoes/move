@@ -19,6 +19,7 @@ const CardCiclo = () => {
     challengeCompleted,
     setChallengeCompleted,
     setTime,
+    updateExperience,
   } = React.useContext(ContextoCiclo);
 
   const actionIndex = Math.floor(Math.random() * action.length);
@@ -30,11 +31,12 @@ const CardCiclo = () => {
     setTime(minDefult);
   };
 
-  const handleCompletei = () => {
+  const handleCompletei = (experienceConquisted) => {
     setHasFinished(false);
     setTimeActive(false);
     setTime(minDefult);
     setChallengeCompleted(challengeCompleted + 1);
+    updateExperience(experienceConquisted);
   };
 
   return (
@@ -61,7 +63,10 @@ const CardCiclo = () => {
             <Button onClick={handleFalhei} isCancel={true}>
               Falhei
             </Button>
-            <Button onClick={handleCompletei} isCancel={false}>
+            <Button
+              onClick={() => handleCompletei(actionSelected.amount)}
+              isCancel={false}
+            >
               Completei
             </Button>
           </footer>

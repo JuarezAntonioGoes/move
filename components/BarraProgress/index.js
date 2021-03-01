@@ -1,16 +1,31 @@
 import React from "react";
+import { ContextoCiclo } from "../../contexts/CicloContext";
 import { Barra, ConstainerBarra, Progress } from "./style";
 
 const BarraProgress = () => {
+  const barraRef = React.useRef();
+
+  const { experienceToNextChallenge, experienceCurrent } = React.useContext(
+    ContextoCiclo
+  );
+
+  const largura = Math.floor(
+    (experienceCurrent * 100) / experienceToNextChallenge
+  );
+
+  React.useEffect(() => {
+    barraRef.current.style.width = `${largura}%`;
+  }, [barraRef, largura]);
+
   return (
     <ConstainerBarra>
       <span>0 xp</span>
       <Barra>
-        <Progress>
-          <div>600px</div>
+        <Progress ref={barraRef}>
+          <div>{experienceCurrent} xp</div>
         </Progress>
       </Barra>
-      <span>600 xp</span>
+      <span>{experienceToNextChallenge} xp</span>
     </ConstainerBarra>
   );
 };
